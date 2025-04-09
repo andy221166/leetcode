@@ -2,11 +2,11 @@
 
 ## Approach 1: Merge and sort
 
-**Intuition**
+### Intuition
 
 A naive approach would be to simply write the values from `nums2` into the end of `nums1`, and then sort `nums1`. Remember that we do not need to return a value, as we should modify `nums1` in-place. While straightforward to code, this approach has a high time complexity as we're not taking advantage of the existing sorting.
 
-**Implementation**
+### Implementation
 
 ```java
 import java.util.Arrays;
@@ -21,7 +21,7 @@ class Solution {
 }
 ```
 
-**Complexity Analysis**
+### Complexity Analysis
 
 * Time complexity: O((n+m)log(n+m))
 
@@ -35,11 +35,11 @@ Most programming languages have a built-in sorting algorithm that uses O(n) spac
 
 ## Approach 2: Three Pointers (Start From the Beginning)
 
-**Intuition**
+### Intuition
 
 Because each array is already sorted, we can achieve an O(n+m) time complexity with the help of the two-pointer technique.
 
-**Algorithm**
+### Algorithm
 
 The simplest implementation would be to make a copy of the values in `nums1`, called `nums1Copy`, and then use two read pointers and one write pointer to read values from `nums1Copy` and `nums2` and write them into `nums1`.
 - Initialize `nums1Copy` to a new array containing the first `m` values of `nums1`.
@@ -53,7 +53,7 @@ The simplest implementation would be to make a copy of the values in `nums1`, ca
     - Write `nums2[p2]` into `nums1[p]`, and increment `p2` by 1.
   - Increment `p` by 1.
 
-**Implementation**
+### Implementation
 
 ```java
 class Solution {
@@ -82,7 +82,7 @@ class Solution {
 }
 ```
 
-**Complexity Analysis**
+### Complexity Analysis
 
 * Time complexity: O(n+m)
 
@@ -96,7 +96,7 @@ We are allocating an additional array of length m.
 
 ## Approach 3: Three Pointers (Start From the End)
 
-**Intuition**
+### Intuition
 
 Approach 2 already demonstrates the best possible time complexity, O(n+m), but still uses additional space. This is because the elements of array `nums1` have to be stored somewhere so that they aren't overwritten.
 
@@ -104,7 +104,7 @@ So, what if instead we start to overwrite `nums1` from the end, where there is n
 
 The algorithm is similar to before, except this time we set `p1` to point at index `m - 1` of `nums1`, `p2` to point at index `n - 1` of nums2, and p to point at index `m + n - 1` of nums1. This way, it is guaranteed that once we start overwriting the first `m` values in `nums1`, we will have already written each into its new position. In this way, we can eliminate the additional space.
 
-**Implementation**
+### Implementation
 
 ```java
 class Solution {
@@ -129,7 +129,7 @@ class Solution {
 }
 ```
 
-**Complexity Analysis**
+### Complexity Analysis
 
 * Time complexity: O(n+m)
 
